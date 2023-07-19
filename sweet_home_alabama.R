@@ -181,12 +181,12 @@ my_theme <- theme_economist_white(gray_bg = FALSE) +
         legend.direction = "vertical", 
         legend.position = "right",
         legend.title = element_blank(),
-        legend.text = element_text(size = 11,
+        legend.text = element_text(size = 10,
                                    color = "gray20"),
-        legend.margin=margin(1, -1, 1, 0),
-        legend.spacing.x = unit(0.25, "cm"),
-        legend.key.size = unit(0.5, "cm"), 
-        legend.key.height = unit(0.5, "cm"),
+        legend.margin=margin(0, 0, 0, 0),
+        legend.spacing.x = unit(0.5, "cm"),
+        legend.key.size = unit(0.25, "cm"), 
+        legend.key.height = unit(0.25, "cm"),
         strip.text = element_text(hjust = 0.5,
                                   vjust = 1,
                                   size = 10,
@@ -204,6 +204,7 @@ adjusted_df %>%
   theme(axis.title.x=element_blank(),
         legend.position="none",
         axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1))
+
 
 
 # total score regions

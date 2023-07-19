@@ -117,27 +117,21 @@ pollution <- -pollution
 
 
 # times the most important (psychological/mental health based) factors by 3
-adjusted_population_density <- population_density*3
-adjusted_green <- green*3
-adjusted_pollution <- pollution*3
+population_density <- population_density*3
+green <- green*3
+pollution <- pollution*3
 
 
 # times the next most important factors by 2
-adjusted_saftey <- saftey*2
-adjusted_government <- government*2
-adjusted_stability <- stability*2
+saftey <- saftey*2
+government <- government*2
+stability <- stability*2
 
 
 # a list of non-adjusted indicators to be averaged for a total score (categories plots)
 indicators <- c("population_density", "average_wage", "cost_of_living", 
                 "green", "government", "saftey", 
                 "pollution", "sunshine", "stability")
-
-
-# a list of adjusted indicators to be averaged for a total score (total score and total score regions plots)
-adjusted_indicators <- c("adjusted_population_density", "average_wage", "cost_of_living", 
-                         "adjusted_green", "adjusted_government", "adjusted_saftey", 
-                         "adjusted_pollution", "sunshine", "adjusted_stability")
 
 
 # returns the row averages of multiple columns. 
@@ -176,21 +170,6 @@ df <- tibble("City" = cities,
              "Total" = get_avg(indicators))
 
 
-# creates a dataframe of the adjusted data. 
-adjusted_df <- tibble("City" = cities,
-                      "Region" = regions,
-                      "Population Density" = adjusted_population_density,
-                      "Average Wage" = average_wage,
-                      "Cost of Living" = cost_of_living,
-                      "Green" = adjusted_green,
-                      "Government" = adjusted_government,
-                      "Saftey" = adjusted_saftey,
-                      "Pollution" = adjusted_pollution,
-                      "Sunishine" = sunshine,
-                      "Stability" = adjusted_stability,
-                      "Total" = get_avg(adjusted_indicators))
-
-
 # creates a personal theme for data visualization. 
 my_theme <- theme_economist_white(gray_bg = FALSE) +
   theme(plot.title = element_text(hjust = 0.5,
@@ -225,17 +204,17 @@ my_theme <- theme_economist_white(gray_bg = FALSE) +
 ```
 
 ## **Summary**
-The movie Sweet Home Alabama is all about the tension between big city life and home. But what if you could have the benefits of a major global city with less of the negative side effects? Are some of cities better than others? This project uses data from a range of sources to arrive at the answer, yes. 
+The movie Sweet Home Alabama touches upon the tension between big city life and home. But what if you could have the benefits of a major global city with less of the negative side effects? Are some of cities better than others? This project uses data from a range of sources to answer that question. 
 
 &nbsp;
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, dpi=600}
 
 # total score 
-adjusted_df %>%
+df %>%
   ggplot(aes(x = reorder(City, -Total), y=Total, fill = "red")) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("Overall") +
+  ggtitle("Quality of life") +
   ylab("Standardized Score") +
   my_theme + 
   theme(axis.title.x=element_blank(),
@@ -248,10 +227,10 @@ adjusted_df %>%
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, dpi=600}
 
 # total score regions
-adjusted_df %>%
+df %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("By region") +
+  ggtitle("Quality of life by region") +
   ylab("Standardized Score") +
   facet_wrap(~Region, scales = "free_x") +
   my_theme + 
@@ -260,19 +239,56 @@ adjusted_df %>%
 
 ```
 
+&nbsp;
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, dpi=600}
+## **Method**
+The z-score for each data distribution is calculated and multiplied by a weight before being added together to arrive at a total score. The weights are determined by order of importance as follows:
 
-# categories 
-df %>%
-  gather(key = "category", value = "value", -c("City","Region", "Total")) %>%
-  ggplot(aes(x = City, y = value, fill = City)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("By category") +
-  ylab("Standardized Score") +
-  facet_wrap(~category) +
-  my_theme + 
-  theme(axis.title.x=element_blank(),
-        axis.text.x = element_blank())
+###### Weight = X3 --- psychological factors --- population density, green and pollution
 
-```
+###### Weight = X2 --- security factors --- safety, stability, government effectiveness
+
+###### Weight = X1 --- physical factors --- average wage, cost of living, sunshine hours
+
+
+&nbsp;
+
+## **Sources**
+
+1) Population density --- km2  
+Wikepedia  
+https://www.wikipedia.org/  
+
+2) Average Monthly Net Salary (After Tax) --- USD  
+Numbeo  
+https://www.numbeo.com/cost-of-living/city_price_rankings?itemId=105
+
+3) Cost of Living Index  
+Numbeo  
+https://www.numbeo.com/cost-of-living/rankings_current.jsp
+
+4) Global sustainability ranking  
+HUGSI  
+https://www.hugsi.green/ranking
+
+5) 2020 Government Effectivenss --- Z-scores  
+Worldwide Governance Indicators  
+https://info.worldbank.org/governance/wgi/
+
+6) Safety Index 2023  
+Numbeo  
+https://www.numbeo.com/crime/rankings.jsp
+
+7) Pollution index 2023  
+Numbeo  
+https://www.numbeo.com/pollution/rankings.jsp
+
+8) Cities by sunshine duration  
+Wikepedia  
+https://en.wikipedia.org/wiki/List_of_cities_by_sunshine_duration
+
+9) Political stability index  
+The Global Economy  
+https://www.theglobaleconomy.com/rankings/wb_political_stability/  
+
+&nbsp;
