@@ -12,6 +12,7 @@ library(dplyr)
 library(ggplot2)
 library(ggthemes)
 library(tidyverse)
+library(gridExtra)
 
 # gets the z scores. 
 get_z_scores <- function(col) {
@@ -204,7 +205,7 @@ my_theme <- theme_economist_white(gray_bg = FALSE) +
 ```
 
 ## **Summary**
-The movie Sweet Home Alabama touches upon the tension between big city life and home. But what if you could have the benefits of a major global city with less of the negative side effects? Are some of cities better than others? This project uses data from a range of sources to answer that question. 
+The movie Sweet Home Alabama touches upon the tension between big city life and somewhere that feels like home. But what if you could have the benefits of a major city with less of the negative side effects? Are some global cities better than others? This project uses data from a range of sources to answer that question. 
 
 &nbsp;
 
@@ -226,29 +227,78 @@ df %>%
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, dpi=600}
 
-# total score regions
-df %>%
+
+# categories Asia 
+p1 <- df %>%
+  filter(Region == "Asia") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("Quality of life by region") +
+  ggtitle("Asia") +
   ylab("Standardized Score") +
-  facet_wrap(~Region, scales = "free_x") +
+  ylim(-2, 2) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
+ 
+
+# categories Europe 
+p2 <- df %>%
+  filter(Region == "Europe") %>%
+  ggplot(aes(x = City, y = Total, fill = City)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("Europe") +
+  ylab("Standardized Score") +
+  ylim(-2, 2) +
+  my_theme + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x = element_blank())
+
+
+# categories North America 
+p3 <- df %>%
+  filter(Region == "North America") %>%
+  ggplot(aes(x = City, y = Total, fill = City)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("North America ") +
+  ylab("Standardized Score") +
+  ylim(-2, 2) +
+  my_theme + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x = element_blank())
+
+
+# categories South America 
+p4 <- df %>%
+  filter(Region == "South America") %>%
+  ggplot(aes(x = City, y = Total, fill = City)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("South America ") +
+  ylab("Standardized Score") +
+  ylim(-2, 2) +
+  my_theme + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x = element_blank())
+
+
+grid.arrange(p1, p2, p3, p4)
 
 ```
 
 &nbsp;
 
 ## **Method**
-The z-score for each data distribution is calculated and multiplied by a weight before being added together to arrive at a total score. The weights are determined by order of importance as follows:
+The z-score for each data distribution is calculated and multiplied by a weight before being added together to get a total score. The weights are determined by order of importance as follows:
 
-###### Weight = X3 --- psychological factors --- population density, green and pollution
+&nbsp;
 
-###### Weight = X2 --- security factors --- safety, stability, government effectiveness
+##### Weight = x3  
+Psychological factors --- population density, sustainability and pollution
 
-###### Weight = X1 --- physical factors --- average wage, cost of living, sunshine hours
+##### Weight = x2  
+Security factors --- safety, stability and government effectiveness
+
+##### Weight = x1  
+Physical factors --- average wage, cost of living and hours of sun
 
 
 &nbsp;

@@ -3,6 +3,7 @@ library(dplyr)
 library(ggplot2)
 library(ggthemes)
 library(tidyverse)
+library(gridExtra)
 
 # gets the z scores. 
 get_z_scores <- function(col) {
@@ -213,22 +214,23 @@ adjusted_df %>%
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("Regions") +
   ylab("Standardized Score") +
-  facet_wrap(~Region, scales = "free_x") +
+  facet_wrap(~Region, scales = "free_x", ncol=1) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
 
 
 
+
+
 # categories Asia 
 df %>%
   filter(Region == "Asia") %>%
-  gather(key = "category", value = "value", -c("City","Region", "Total")) %>%
-  ggplot(aes(x = City, y = value, fill = City)) +
+  ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("Categories: Asia") +
+  ggtitle("Asia") +
   ylab("Standardized Score") +
-  facet_wrap(~category) +
+  ylim(-2, 2) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
@@ -237,12 +239,11 @@ df %>%
 # categories Europe 
 df %>%
   filter(Region == "Europe") %>%
-  gather(key = "category", value = "value", -c("City","Region", "Total")) %>%
-  ggplot(aes(x = City, y = value, fill = City)) +
+  ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("Categories: Europe") +
+  ggtitle("Europe") +
   ylab("Standardized Score") +
-  facet_wrap(~category) +
+  ylim(-2, 2) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
@@ -251,12 +252,11 @@ df %>%
 # categories North America 
 df %>%
   filter(Region == "North America") %>%
-  gather(key = "category", value = "value", -c("City","Region", "Total")) %>%
-  ggplot(aes(x = City, y = value, fill = City)) +
+  ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("Categories: North America") +
+  ggtitle("North America ") +
   ylab("Standardized Score") +
-  facet_wrap(~category) +
+  ylim(-2, 2) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
@@ -265,12 +265,11 @@ df %>%
 # categories South America 
 df %>%
   filter(Region == "South America") %>%
-  gather(key = "category", value = "value", -c("City","Region", "Total")) %>%
-  ggplot(aes(x = City, y = value, fill = City)) +
+  ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("Categories: South America") +
+  ggtitle("South America ") +
   ylab("Standardized Score") +
-  facet_wrap(~category) +
+  ylim(-2, 2) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
