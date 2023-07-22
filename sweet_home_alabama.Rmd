@@ -291,14 +291,17 @@ The z-score for each data distribution is calculated and multiplied by a weight 
 
 &nbsp;
 
-##### Weight = x3  
-Psychological factors --- population density, sustainability and pollution
+##### Psychological factors  
+- population density, sustainability and pollution  
+- weight = x3 
 
-##### Weight = x2  
-Security factors --- safety, stability and government effectiveness
+##### Security factors  
+- safety, stability and government effectiveness  
+- weight = x2 
 
-##### Weight = x1  
-Physical factors --- average wage, cost of living and hours of sun
+##### Physical factors  
+- average wage, cost of living and hours of sun  
+- weight = x1
 
 
 &nbsp;

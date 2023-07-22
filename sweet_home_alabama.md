@@ -27,17 +27,20 @@ determined by order of importance as follows:
 
  
 
-##### Weight = x3
+##### Psychological factors
 
-Psychological factors — population density, sustainability and pollution
+  - population density, sustainability and pollution  
+  - weight = x3
 
-##### Weight = x2
+##### Security factors
 
-Security factors — safety, stability and government effectiveness
+  - safety, stability and government effectiveness  
+  - weight = x2
 
-##### Weight = x1
+##### Physical factors
 
-Physical factors — average wage, cost of living and hours of sun
+  - average wage, cost of living and hours of sun  
+  - weight = x1
 
  
 

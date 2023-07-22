@@ -224,7 +224,7 @@ adjusted_df %>%
 
 
 # categories Asia 
-df %>%
+p1 <- df %>%
   filter(Region == "Asia") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -237,7 +237,7 @@ df %>%
  
 
 # categories Europe 
-df %>%
+p2 <- df %>%
   filter(Region == "Europe") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -250,7 +250,7 @@ df %>%
 
 
 # categories North America 
-df %>%
+p3 <- df %>%
   filter(Region == "North America") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -263,7 +263,7 @@ df %>%
 
 
 # categories South America 
-df %>%
+p4 <- df %>%
   filter(Region == "South America") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -273,6 +273,9 @@ df %>%
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
+
+
+grid.arrange(p1, p2, p3, p4)
 
 
 
