@@ -205,7 +205,7 @@ my_theme <- theme_economist_white(gray_bg = FALSE) +
 ```
 
 ## **Summary**
-The movie Sweet Home Alabama touches upon the tension between big city life and somewhere that feels like home. But what if you could have the benefits of a major city with less of the negative side effects? Are some global cities better than others? This project uses data from a range of sources to answer that question. 
+The movie Sweet Home Alabama touches upon the tension some people face between big city life and the comfort of home. But what if you could have the benefits of living in a major city with less of the negative side effects? Are some global cities better than others? This project uses data from a range of sources to tackle that question. The answer is yes.
 
 &nbsp;
 
@@ -216,7 +216,7 @@ df %>%
   ggplot(aes(x = reorder(City, -Total), y=Total, fill = "red")) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("Quality of life") +
-  ylab("Standardized Score") +
+  ylab("Z-Score") +
   my_theme + 
   theme(axis.title.x=element_blank(),
         legend.position="none",
@@ -234,8 +234,8 @@ p1 <- df %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("Asia") +
-  ylab("Standardized Score") +
-  ylim(-2, 2) +
+  ylab("Z-Score") +
+  ylim(-2, 1.5) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
@@ -247,8 +247,8 @@ p2 <- df %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("Europe") +
-  ylab("Standardized Score") +
-  ylim(-2, 2) +
+  ylab("Z-Score") +
+  ylim(-2, 1.5) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
@@ -260,8 +260,8 @@ p3 <- df %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("North America ") +
-  ylab("Standardized Score") +
-  ylim(-2, 2) +
+  ylab("Z-Score") +
+  ylim(-2, 1.5) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
@@ -273,8 +273,8 @@ p4 <- df %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("South America ") +
-  ylab("Standardized Score") +
-  ylim(-2, 2) +
+  ylab("Z-Score") +
+  ylim(-2, 1.5) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
@@ -287,7 +287,12 @@ grid.arrange(p1, p2, p3, p4)
 &nbsp;
 
 ## **Method**
-The z-score for each data distribution is calculated and multiplied by a weight before being added together to get a total score. The weights are determined by order of importance as follows:
+The z-score for each data distribution is calculated and multiplied by a weight before being added together to get a total score. The weights are determined by order of importance according to the model builder. 
+
+&nbsp;
+&nbsp;
+
+<img src="total_score.JPG" alt="Total score calculation" height="200">
 
 &nbsp;
 

@@ -5,11 +5,12 @@ Jack Carter
 
 ## **Summary**
 
-The movie Sweet Home Alabama touches upon the tension between big city
-life and somewhere that feels like home. But what if you could have the
-benefits of a major city with less of the negative side effects? Are
-some global cities better than others? This project uses data from a
-range of sources to answer that question.
+The movie Sweet Home Alabama touches upon the tension some people face
+between big city life and the comfort of home. But what if you could
+have the benefits of living in a major city with less of the negative
+side effects? Are some global cities better than others? This project
+uses data from a range of sources to tackle that question. The answer is
+yes.
 
  
 
@@ -23,7 +24,11 @@ range of sources to answer that question.
 
 The z-score for each data distribution is calculated and multiplied by a
 weight before being added together to get a total score. The weights are
-determined by order of importance as follows:
+determined by order of importance according to the model builder.
+
+   
+
+<img src="total_score.JPG" alt="Total score calculation" height="200">
 
  
 
