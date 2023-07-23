@@ -307,7 +307,7 @@ The z-score for each data distribution is calculated and multiplied by a weight 
 &nbsp;
 &nbsp;
 
-<img src="total_score.JPG" alt="Total score calculation" height="300">
+<img src="total_score.JPG" alt="Total score calculation">
 
 &nbsp;
 

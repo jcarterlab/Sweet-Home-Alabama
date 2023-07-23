@@ -44,7 +44,7 @@ importance according to the modeler’s personal preferences.
 
    
 
-<img src="total_score.JPG" alt="Total score calculation" height="300">
+<img src="total_score.JPG" alt="Total score calculation">
 
  
 
