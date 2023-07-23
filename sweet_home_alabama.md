@@ -5,12 +5,13 @@ Jack Carter
 
 ## **Summary**
 
-The movie Sweet Home Alabama touches upon the tension some people face
-between big city life and the comfort of home. But what if you could
-have the benefits of living in a major city with less of the negative
-side effects? Are some global cities better than others? This project
-uses data from a range of sources to tackle that question. The answer is
-yes.
+The movie Sweet Home Alabama touches on the tension some face between
+big city life and the benefits of somewhere smaller that feels like
+home. But what if you could have the benefits of living in a major
+global city with less of the negative side effects? Are some
+international hubs better than others when it comes to quality of life?
+This project uses data from a range of sources to tackle that question.
+The answer is yes.
 
  
 
@@ -22,15 +23,32 @@ yes.
 
 ## **Method**
 
+The quality of life metric includes the following variables:
+
+  - population density
+  - average wage
+  - cost of living
+  - sustainability
+  - government effectivness
+  - saftey
+  - pollution
+  - hours of sun
+  - political stability
+
+ 
+
 The z-score for each data distribution is calculated and multiplied by a
-weight before being added together to get a total score. The weights are
-determined by order of importance according to the model builder.
+weight before being added together and divided by the number of
+variables to get a total score. The weights are determined by order of
+importance according to the modeler’s personal preferences.
 
    
 
-<img src="total_score.JPG" alt="Total score calculation" height="200">
+<img src="total_score.JPG" alt="Total score calculation" height="300">
 
  
+
+#### Weights
 
 ##### Psychological factors
 
