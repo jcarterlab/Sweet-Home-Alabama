@@ -7,15 +7,16 @@ Jack Carter
 
 The movie Sweet Home Alabama touches on the tension some face between
 big city life and the benefits of somewhere smaller that feels more like
-home. But what if you could have the benefits of living in a major
-global city with less of the negative side effects? Are some
-international hubs better than others when it comes to quality of life?
-This project uses data from a range of sources to tackle that question.
-The answer is yes.
+home. But what if you could have the benefits of living in a major city
+with less of the negative side effects? Are some global hubs better than
+others when it comes to quality of life? This project uses data from a
+range of sources to tackle that question. The answer is yes.
 
  
 
 ![](sweet_home_alabama_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
+ 
 
 ![](sweet_home_alabama_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
@@ -29,8 +30,8 @@ The quality of life metric includes the following variables:
   - average wage
   - cost of living
   - sustainability
-  - government effectivness
-  - saftey
+  - government effectiveness
+  - safety
   - pollution
   - hours of sun
   - political stability
@@ -40,32 +41,32 @@ The quality of life metric includes the following variables:
 The z-score for each data distribution is calculated and multiplied by a
 weight before being added together and divided by the number of
 variables to get a total score. The weights are determined by order of
-importance according to the modeler’s personal preferences.
+importance according to the modeler’s personal preference.
 
    
 
 <img src="total_score.JPG" alt="Total score calculation">
 
- 
+   
 
 #### Weights
 
 ##### Psychological factors
 
   - population density, sustainability and pollution  
-  - weight = x2
+  - weight = x1.5
 
 ##### Security factors
 
-  - safety, stability and government effectiveness  
-  - weight = x1.5
+  - safety, political stability and government effectiveness  
+  - weight = x1.25
 
 ##### Other factors
 
   - average wage, cost of living and hours of sun  
   - weight = x1
 
- 
+   
 
 ## **Sources**
 
