@@ -6,7 +6,7 @@ Jack Carter
 ## **Summary**
 
 The movie Sweet Home Alabama touches on the tension some face between
-big city life and the benefits of somewhere smaller that feels like
+big city life and the benefits of somewhere smaller that feels more like
 home. But what if you could have the benefits of living in a major
 global city with less of the negative side effects? Are some
 international hubs better than others when it comes to quality of life?
@@ -53,14 +53,14 @@ importance according to the modeler’s personal preferences.
 ##### Psychological factors
 
   - population density, sustainability and pollution  
-  - weight = x3
+  - weight = x2
 
 ##### Security factors
 
   - safety, stability and government effectiveness  
-  - weight = x2
+  - weight = x1.5
 
-##### Physical factors
+##### Other factors
 
   - average wage, cost of living and hours of sun  
   - weight = x1

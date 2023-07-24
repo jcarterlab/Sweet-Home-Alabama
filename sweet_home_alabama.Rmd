@@ -46,87 +46,113 @@ get_avg <- function(z_scores) {
 }
 
 # a list of cities to be analyzed
-cities <- c("London", "Barcelona", "Madrid", "Amsterdam", "Geneva", "Lisbon",
+cities <- c("London", "Amsterdam", "Geneva", "Berlin",
+            "Barcelona", "Madrid", "Lisbon", "Rome",
             "Vancouver", "Toronto", "New York", "San Franscisco",
-            "Singapore", "Wellington", "Auckland", "Sydney", "Melbournne",
+            "Singapore", "Shanghai", "Tokyo", "Seoul",
+            "Wellington", "Auckland", "Sydney", "Melbournne",
             "Buenos Aires", "Bogota", "Rio de Janeiro", "Sao Paulo")
 
 
 # a list of corresponding regions 
-regions <- c(rep("Europe", 6), rep("North America", 4), rep("Asia", 5), rep("South America", 4))
+regions <- c(rep("Northern Europe", 4), rep("Southern Europe", 4), rep("North America", 4), rep("Asia", 4), rep("Australasia", 4), rep("South America", 4))
 
 
 # 1) Wikepedia - km2 - https://www.wikipedia.org/
-population_density <- get_z_scores(c(5598, 16000, 5337, 4908, 12000, 5445.7,
+population_density <- get_z_scores(c(5598, 4908, 12000, 4048,
+                                     16000, 5337, 5445.7, 2236,
                                      5749, 4427.8, 10194, 6655.4,
-                                     7804, 900, 1210, 2037, 503.472,
+                                     7804, 4200, 6363, 16000,
+                                     900, 1210, 2037, 503.472,
                                      13680, 17755, 5377, 7216.3))
 
 # 2) Numbeo - Average Monthly Net Salary (After Tax) USD - https://www.numbeo.com/cost-of-living/city_price_rankings?itemId=105
-average_wage <- get_z_scores(c(4238.68, 2039.94, 2804.49, 4195.81, 6171.96, 1247,
+average_wage <- get_z_scores(c(4238.68, 4195.81, 6171.96, 3448.71,
+                               2039.94, 2804.49, 1247, 1942.00,
                                3288.54, 3356.11, 6530.28, 6133.08,
-                               5117.62, 2644.28, 3326.10, 4109.44, 3465.38,
+                               5117.62, 1355.62, 2630.64, 2966.22,
+                               2644.28, 3326.10, 4109.44, 3465.38,
                                403.17, 364.45, 399.80, 491.76))
 
 # 3) Numbeo - Cost of Living Index - https://www.numbeo.com/cost-of-living/rankings_current.jsp
-cost_of_living <- get_z_scores(c(85.5, 59.2, 53.9, 69.9, 116.4, 53.7,
+cost_of_living <- get_z_scores(c(85.5, 69.9, 116.4, 72.3,
+                                 59.2, 53.9, 53.7, 66.1,
                                  73.9, 73.0, 100.0, 97.7,
-                                 87.3, 76.2, 79.2, 82.4, 80.3,
+                                 87.3, 43.6, 58.4, 78.0,
+                                 76.2, 79.2, 82.4, 80.3,
                                  30.0, 29.7, 42.3, 44.1))
 
 # 4) HUGSI - global ranking - https://www.hugsi.green/ranking
-green <- get_z_scores(c(91, 96, 239, 233, 53, 95,
+green <- get_z_scores(c(91, 233, 53, 125,
+                        96, 239, 95, 147,
                         105, 110, 242, 256,
-                        213, 84, 188, 180, 203,
+                        213, 141, 263, 227,
+                        188, 188, 180, 203,
                         264, 267, 134, 211))
 
 # 5) Worldwide Governance Indicators - 2020 Estimate - z scores - https://info.worldbank.org/governance/wgi/
-government <- get_z_scores(c(1.38, 0.89, 0.89, 1.85, 2.02, 1.02,
+government <- get_z_scores(c(1.38, 1.85, 2.02, 1.36,
+                             0.89, 0.89, 1.02, 0.4,
                              1.64, 1.64, 1.32, 1.32,
-                             2.34, 1.59, 1.59, 1.62, 1.62,
+                             2.34, 0.65, 1.6, 1.42,
+                             1.59, 1.59, 1.62, 1.62,
                              -0.22, 0.04,-0.447, -0.447))
 
 # 6) Numbeo - Safety Index 2023 - https://www.numbeo.com/crime/rankings.jsp
-saftey <- get_z_scores(c(46.1, 49.3, 72.5, 70.9, 69.4, 66.9,
+saftey <- get_z_scores(c(46.1, 70.9, 69.4, 56.5,
+                         49.3, 72.5, 66.9, 46.9,
                          59.1, 57.3, 50.5, 38.6,
-                         76.9, 66.5, 50.7, 65.7, 56.0,
+                         76.9, 69.7, 76.0, 75.2,
+                         66.5, 50.7, 65.7, 56.0,
                          36.8, 33.8, 22.4, 29.4))
 
 # 7) Numbeo - pollution index 2023 - https://www.numbeo.com/pollution/rankings.jsp
-pollution <- get_z_scores(c(57.7, 65.2, 40.0, 25.1, 25.5, 27.7,
+pollution <- get_z_scores(c(57.7, 25.1, 25.5, 39.4,
+                            65.2, 40.0, 27.7, 117.8,
                             26.6, 37.2, 57.9, 50.2,
-                            33.0, 22.8, 31.0, 30.5, 28.4,
+                            33.0, 73.1, 42.6, 58.9,
+                            22.8, 31.0, 30.5, 28.4,
                             52.4, 70.2, 67.4, 79.0))
 
 # 8) Wikepedia - cities by sunshine duration - https://en.wikipedia.org/wiki/List_of_cities_by_sunshine_duration
-sunshine <- get_z_scores(c(1633, 2591, 2769, 1662, 1887, 2806,
+sunshine <- get_z_scores(c(1633, 1662, 1887, 1626,
+                           2591, 2769, 2806, 2473,
                            1937.6, 2066.4, 2534.7, 3061.7,
-                           2022.4, 2058.7, 2003.1, 2468.1, 2362.6,
+                           2022.4, 1775.8, 1876.7, 2066.0,
+                           2058.7, 2003.1, 2468.1, 2362.6,
                            2525.2, 1328.0, 2187.3, 1893.5))
 
 # 9) the global economy - Political stability index - https://www.theglobaleconomy.com/rankings/wb_political_stability/
-stability <- get_z_scores(c(0.54, 0.58, 0.58, 0.92, 1.13, 0.95,
+stability <- get_z_scores(c(0.54, 0.92, 1.13, 0.76,
+                            0.58, 0.58, 0.95, 0.58,
                             0.94, 0.94, 0, 0,
-                            1.49, 1.44, 1.44, 0.85, 0.85,
+                            1.49, -0.48, 1.03, 0.66,
+                            1.44, 1.44, 0.85, 0.85,
                             -0.11, -0.91, -0.49, -0.49))
 
 
-# make bad things negative
+# make bad things or rankings negative
 population_density <- -population_density
 cost_of_living <- -cost_of_living
+green <- -green
 pollution <- -pollution
 
 
+# weights
+weight_1 <- 2
+Weight_2 <- 1.5
+
+
 # times the most important (psychological/mental health based) factors by 3
-population_density <- population_density*3
-green <- green*3
-pollution <- pollution*3
+population_density <- population_density*weight_1
+green <- green*weight_1
+pollution <- pollution*weight_1
 
 
 # times the next most important factors by 2
-saftey <- saftey*2
-government <- government*2
-stability <- stability*2
+saftey <- saftey*Weight_2
+government <- government*Weight_2
+stability <- stability*Weight_2
 
 
 # a list of non-adjusted indicators to be averaged for a total score (categories plots)
@@ -205,7 +231,7 @@ my_theme <- theme_economist_white(gray_bg = FALSE) +
 ```
 
 ## **Summary**
-The movie Sweet Home Alabama touches on the tension some face between big city life and the benefits of somewhere smaller that feels like home. But what if you could have the benefits of living in a major global city with less of the negative side effects? Are some international hubs better than others when it comes to quality of life? This project uses data from a range of sources to tackle that question. The answer is yes.
+The movie Sweet Home Alabama touches on the tension some face between big city life and the benefits of somewhere smaller that feels more like home. But what if you could have the benefits of living in a major global city with less of the negative side effects? Are some international hubs better than others when it comes to quality of life? This project uses data from a range of sources to tackle that question. The answer is yes.
 
 &nbsp;
 
@@ -225,62 +251,84 @@ df %>%
 
 ```
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, dpi=600}
+```{r, echo = FALSE, message = FALSE, warning = FALSE, dpi=600, fig.height=8}
 
+y_lim <- c(-2.25, 1)
 
-# categories Asia 
+# Northern Europe 
 p1 <- df %>%
-  filter(Region == "Asia") %>%
+  filter(Region == "Northern Europe") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("Asia") +
+  ggtitle("Northern Europe") +
   ylab("Z-Score") +
-  ylim(-2, 1.5) +
+  ylim(y_lim) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
- 
 
-# categories Europe 
+# Southern Europe 
 p2 <- df %>%
-  filter(Region == "Europe") %>%
+  filter(Region == "Southern Europe") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
-  ggtitle("Europe") +
+  ggtitle("Southern Europe") +
   ylab("Z-Score") +
-  ylim(-2, 1.5) +
+  ylim(y_lim) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
 
-
-# categories North America 
+# North America 
 p3 <- df %>%
   filter(Region == "North America") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("North America ") +
   ylab("Z-Score") +
-  ylim(-2, 1.5) +
+  ylim(y_lim) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
 
+# categories Asia 
+p4 <- df %>%
+  filter(Region == "Asia") %>%
+  ggplot(aes(x = City, y = Total, fill = City)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("Asia") +
+  ylab("Z-Score") +
+  ylim(y_lim) +
+  my_theme + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x = element_blank())
+
+# categories Australasia 
+p5 <- df %>%
+  filter(Region == "Australasia") %>%
+  ggplot(aes(x = City, y = Total, fill = City)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("Australasia") +
+  ylab("Z-Score") +
+  ylim(y_lim) +
+  my_theme + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x = element_blank())
 
 # categories South America 
-p4 <- df %>%
+p6 <- df %>%
   filter(Region == "South America") %>%
   ggplot(aes(x = City, y = Total, fill = City)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("South America ") +
   ylab("Z-Score") +
-  ylim(-2, 1.5) +
+  ylim(y_lim) +
   my_theme + 
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
 
 
-grid.arrange(p1, p2, p3, p4)
+grid.arrange(p1, p2, p3, p4, p5, p6)
 
 ```
 
@@ -315,13 +363,13 @@ The z-score for each data distribution is calculated and multiplied by a weight 
 
 ##### Psychological factors  
 - population density, sustainability and pollution  
-- weight = x3 
+- weight = x2
 
 ##### Security factors  
 - safety, stability and government effectiveness  
-- weight = x2 
+- weight = x1.5
 
-##### Physical factors  
+##### Other factors  
 - average wage, cost of living and hours of sun  
 - weight = x1
 
