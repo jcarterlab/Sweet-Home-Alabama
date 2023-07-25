@@ -160,19 +160,24 @@ pollution <- -pollution
 
 # weights
 weight_1 <- 1.5
-Weight_2 <- 1.25
+weight_2 <- 1.25
+weight_3 <- 1
 
 
-# times the most important (psychological/mental health based) factors by 3
+# psychological well-being
 population_density <- population_density*weight_1
 green <- green*weight_1
 pollution <- pollution*weight_1
 
+# security and public services
+saftey <- saftey*weight_2
+stability <- stability*weight_2
+government <- government*weight_2
 
-# times the next most important factors by 2
-saftey <- saftey*Weight_2
-government <- government*Weight_2
-stability <- stability*Weight_2
+# economic and weather
+average_wage <- average_wage*weight_3
+cost_of_living <- cost_of_living*weight_3
+sunshine <- sunshine*weight_3
 
 
 # a list of non-adjusted indicators to be averaged for a total score (categories plots)
@@ -267,7 +272,7 @@ df %>%
   my_theme + 
   theme(axis.title.x=element_blank(),
         legend.position="none",
-        axis.text.x = element_text(angle = 55, vjust = 0.5, hjust=1))
+        axis.text.x = element_text(angle = 60, vjust = 0.5, hjust=1))
 
 
 ```
@@ -350,7 +355,6 @@ p6 <- df %>%
   theme(axis.title.x=element_blank(),
         axis.text.x = element_blank())
 
-
 # Middle East
 p7 <- df %>%
   filter(Region == "Middle East") %>%
@@ -398,7 +402,7 @@ The quality of life metric includes the following variables:
 
 &nbsp;
 
-The z-score for each data distribution is calculated and multiplied by a weight before being added together and divided by the number of variables to get a total score. The weights are determined by order of importance according to the modeler's personal preference. 
+The z-score for each data distribution is calculated and multiplied by a weight before being added together and divided by the number of variables to get a total score. The weights are determined by order of importance according to the modeler's preferences. 
 
 &nbsp;
 &nbsp;
@@ -410,17 +414,20 @@ The z-score for each data distribution is calculated and multiplied by a weight 
 
 #### Weights  
 
-##### Psychological factors  
-- population density, sustainability and pollution  
-- weight = x1.5
+##### Psychological well-being x1.5
+- population density
+- sustainability
+- pollution  
 
-##### Security factors  
-- safety, political stability and government effectiveness  
-- weight = x1.25
+##### Security and government x1.25
+- safety
+- political stability  
+- government effectiveness
 
-##### Other factors  
-- average wage, cost of living and hours of sun  
-- weight = x1
+##### Purchasing power and weather x1
+- average wage
+- cost of living
+- hours of sun
 
 
 &nbsp;

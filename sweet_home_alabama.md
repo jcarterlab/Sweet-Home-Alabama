@@ -41,7 +41,7 @@ The quality of life metric includes the following variables:
 The z-score for each data distribution is calculated and multiplied by a
 weight before being added together and divided by the number of
 variables to get a total score. The weights are determined by order of
-importance according to the modeler’s personal preference.
+importance according to the modeler’s preferences.
 
    
 
@@ -51,20 +51,23 @@ importance according to the modeler’s personal preference.
 
 #### Weights
 
-##### Psychological factors
+##### Psychological well-being x1.5
 
-  - population density, sustainability and pollution  
-  - weight = x1.5
+  - population density
+  - sustainability
+  - pollution
 
-##### Security factors
+##### Security and government x1.25
 
-  - safety, political stability and government effectiveness  
-  - weight = x1.25
+  - safety
+  - political stability  
+  - government effectiveness
 
-##### Other factors
+##### Purchasing power and weather x1
 
-  - average wage, cost of living and hours of sun  
-  - weight = x1
+  - average wage
+  - cost of living
+  - hours of sun
 
    
 
