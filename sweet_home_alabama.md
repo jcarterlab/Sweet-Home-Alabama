@@ -6,7 +6,7 @@ Jack Carter
 ## **Summary**
 
 The movie Sweet Home Alabama touches on the tension some face between
-big city life and the benefits of somewhere smaller that feels more like
+big city life and the benefits of somewhere smaller that feels like
 home. But what if you could have the benefits of living in a major city
 with less of the negative side effects? Are some global hubs better than
 others when it comes to quality of life? This project uses data from a
